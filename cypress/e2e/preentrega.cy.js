@@ -23,13 +23,10 @@ describe("Preentrega", () =>{
         cy.get('#registertoggle').dblclick();
         loginPage.escribirUsuario(data.usuario);
         loginPage.escribirContraseña(data.contraseña);
-        loginPage.clickLoginBtn();
-        
-        
+        loginPage.clickLoginBtn();     
     });
 
     it('Deberia permitir agregar 2 productos al carrito', () =>{
-        //TODO
         let precioCarrito = data.producto1.precio + data.producto2.precio;
         homePage.clickOnlineShoppingButton();
         productsPage.agregarProducto(data.producto1.nombre);
@@ -37,12 +34,8 @@ describe("Preentrega", () =>{
         productsPage.clickGoToShoppingCart();
         shoppingCartPage.devolverProducto(data.producto1.nombre).should('have.length', 1);
         shoppingCartPage.devolverPrecio(data.producto1.nombre).should('have.text', "$"+data.producto1.precio);
-        
         shoppingCartPage.devolverProducto(data.producto2.nombre).should('have.length', 1);
         shoppingCartPage.devolverPrecio(data.producto2.nombre).should('have.text', "$"+data.producto2.precio);
-        shoppingCartPage.devolverPrecioTotal().should('have.text',  precioCarrito);
-        
-
-
+        shoppingCartPage.devolverPrecioTotal().should('have.text',  precioCarrito);   
     });
 });

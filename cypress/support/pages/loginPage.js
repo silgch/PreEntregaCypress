@@ -15,7 +15,5 @@ export class LoginPage {
 
     clickLoginBtn() {
         cy.get(this.loginBtn).click();
-    };
-
-    
+    };  
 };
